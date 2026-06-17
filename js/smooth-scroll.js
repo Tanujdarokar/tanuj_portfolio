@@ -24,16 +24,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Alternative smooth scroll using CSS (for browsers that don't support JavaScript)
 // This is handled by html { scroll-behavior: smooth; } in the CSS file
-
-// Scroll performance optimization
-let scrollTimer = null;
-window.addEventListener('scroll', () => {
-    if (scrollTimer !== null) {
-        return;
-    }
-
-    scrollTimer = setTimeout(() => {
-        // Add any scroll-based animations here
-        scrollTimer = null;
-    }, 100);
-}, { passive: true });
