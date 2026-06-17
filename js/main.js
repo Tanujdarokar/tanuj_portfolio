@@ -42,25 +42,24 @@ function updateActiveLink(hash) {
     });
 }
 
-// Update active link on scroll
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
+// Active navigation link on scroll using IntersectionObserver
+const sections = document.querySelectorAll('section');
+const navObserverOptions = {
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+};
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const activeId = entry.target.getAttribute('id');
+            updateActiveLink(`#${activeId}`);
         }
     });
+}, navObserverOptions);
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
+sections.forEach(section => {
+    navObserver.observe(section);
 });
 
 // ============ Portfolio Filter ============
@@ -80,6 +79,7 @@ filterButtons.forEach(button => {
         portfolioItems.forEach(item => {
             if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                 item.classList.remove('hidden');
+                item.classList.add('active'); // Ensure animated state is active when filtered
                 item.style.animation = 'fadeIn 0.3s ease';
             } else {
                 item.classList.add('hidden');
@@ -126,53 +126,57 @@ if (contactForm) {
     });
 }
 
-// ============ Fade In Animation on Scroll ============
+// ============ Scroll Reveal Animation ============
 
-const observerOptions = {
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserverOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeIn 0.6s ease forwards';
-            observer.unobserve(entry.target);
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, revealObserverOptions);
 
-// Observe portfolio items
-portfolioItems.forEach(item => {
-    observer.observe(item);
+revealElements.forEach(element => {
+    revealObserver.observe(element);
 });
 
-// ============ Add CSS animation for fade-in ============
+// ============ Scroll to Top Button ============
 
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+if (scrollToTopBtn) {
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 400) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
+    }, { passive: true });
 
-// ============ Utility Functions ============
-
-// Scroll to top button (optional enhancement)
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
+
+// ============ Utility Functions ============
 
 // Log page load completion
 window.addEventListener('load', () => {
@@ -185,3 +189,70 @@ document.addEventListener('keydown', (e) => {
         navMenu.classList.remove('active');
     }
 });
+
+// ============ Typewriter Animation ============
+
+const typewriterText = document.getElementById('typewriter');
+const phrases = ['Flutter Apps.', 'MERN Stack.', 'Performance.', 'Clean Design.'];
+let phraseIndex = 0;
+let characterIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
+
+function type() {
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+        typewriterText.textContent = currentPhrase.substring(0, characterIndex - 1);
+        characterIndex--;
+        typeSpeed = 50; // faster deletion
+    } else {
+        typewriterText.textContent = currentPhrase.substring(0, characterIndex + 1);
+        characterIndex++;
+        typeSpeed = 100; // standard writing speed
+    }
+
+    if (!isDeleting && characterIndex === currentPhrase.length) {
+        // Pause at the end of the phrase
+        typeSpeed = 1500;
+        isDeleting = true;
+    } else if (isDeleting && characterIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500; // pause before starting next phrase
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
+if (typewriterText) {
+    setTimeout(type, 1000);
+}
+
+// ============ Parallax Background Blobs ============
+
+const blob1 = document.getElementById('blob1');
+const blob2 = document.getElementById('blob2');
+const blob3 = document.getElementById('blob3');
+
+let mouseX = 0;
+let mouseY = 0;
+let mouseTicking = false;
+
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!mouseTicking) {
+        window.requestAnimationFrame(() => {
+            const xOffset = (mouseX - window.innerWidth / 2) / 25;
+            const yOffset = (mouseY - window.innerHeight / 2) / 25;
+
+            if (blob1) blob1.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+            if (blob2) blob2.style.transform = `translate3d(${-xOffset}px, ${-yOffset}px, 0)`;
+            if (blob3) blob3.style.transform = `translate3d(${xOffset * 0.5}px, ${-yOffset * 0.5}px, 0)`;
+            mouseTicking = false;
+        });
+        mouseTicking = true;
+    }
+}, { passive: true });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,22 @@
     <title>Tanuj Darokar | Full-Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
+    <!-- Background Gradient Blobs -->
+    <div class="blob-container">
+        <div class="blob blob-1" id="blob1"></div>
+        <div class="blob blob-2" id="blob2"></div>
+        <div class="blob blob-3" id="blob3"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -37,14 +49,14 @@
         <div class="container">
             <div class="hero-flex">
                 <div class="hero-content">
-                    <h1 class="hero-title">Hi, I'm <span>Tanuj Darokar</span></h1>
-                    <p class="hero-subtitle">Building scalable mobile and web solutions with Flutter & MERN Stack. Focused on performance and user experience.</p>
-                    <div class="hero-buttons">
+                    <h1 class="hero-title reveal fade-up">Hi, I'm <span>Tanuj Darokar</span></h1>
+                    <p class="hero-subtitle reveal fade-up delay-1">Building scalable solutions. Focused on <span id="typewriter" class="typewriter-text"></span><span class="cursor"></span></p>
+                    <div class="hero-buttons reveal fade-up delay-2">
                         <a href="#portfolio" class="btn btn-primary">View Projects</a>
                         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
-                <div class="hero-animation">
+                <div class="hero-animation reveal scale-up delay-3">
                     <div class="animated-circle"></div>
                     <div class="animated-circle"></div>
                     <div class="animated-circle"></div>
@@ -59,12 +71,16 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title reveal fade-up">About Me</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Final-year Computer Science student and passionate Flutter Developer with hands-on experience building 3+ cross-platform mobile applications. Strong foundation in Dart, Firebase, REST APIs, and Data Structures & Algorithms.</p>
-                    <p>Seeking an entry-level Flutter Developer role to build scalable, user-focused mobile solutions. Experienced in designing responsive UIs, API integration, authentication, and MVC architecture. Solved 100+ DSA problems with strong problem-solving skills.</p>
-                    <div class="skills">
+                <div class="about-text reveal fade-left">
+                    <p>Final-year Computer Science student and passionate Flutter Developer with hands-on experience
+                        building 3+ cross-platform mobile applications. Strong foundation in Dart, Firebase, REST APIs,
+                        and Data Structures & Algorithms.</p>
+                    <p>Seeking an entry-level Flutter Developer role to build scalable, user-focused mobile solutions.
+                        Experienced in designing responsive UIs, API integration, authentication, and MVC architecture.
+                        Solved 100+ DSA problems with strong problem-solving skills.</p>
+                    <div class="skills reveal fade-up delay-1">
                         <h3>Programming Languages</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">Dart</span>
@@ -74,7 +90,7 @@
                             <span class="skill-tag">CSS</span>
                         </div>
                     </div>
-                    <div class="skills">
+                    <div class="skills reveal fade-up delay-2">
                         <h3>Frameworks & Tools</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">Flutter</span>
@@ -84,11 +100,13 @@
                             <span class="skill-tag">Riverpod</span>
                             <span class="skill-tag">React</span>
                             <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">MongoDB</span>
                             <span class="skill-tag">Git</span>
                             <span class="skill-tag">Android Studio</span>
                         </div>
                     </div>
-                    <div class="skills">
+                    <div class="skills reveal fade-up delay-3">
                         <h3>Core Competencies</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">DSA</span>
@@ -101,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
+                <div class="about-image reveal fade-right">
                     <div class="placeholder-image">Your Image Here</div>
                 </div>
             </div>
@@ -114,81 +132,120 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="filter-buttons">
+            <h2 class="section-title reveal fade-up">Featured Projects</h2>
+            <div class="filter-buttons reveal fade-up delay-1">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
                 <button class="filter-btn" data-filter="achievements">Achievements</button>
             </div>
             <div class="portfolio-grid">
                 <!-- Portfolio Item 1 -->
-                <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-item reveal fade-up delay-1" data-category="mobile">
                     <div class="portfolio-image">
                         <div class="placeholder">AI Study</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>AI Study Assistance App</h3>
-                        <p>Built AI-powered study companion used by 50+ students. Integrated external REST APIs for dynamic study recommendations and task management features. Designed fully responsive UI for seamless mobile experience.</p>
+                        <p>Built AI-powered study companion used by 50+ students. Integrated external REST APIs for
+                            dynamic study recommendations and task management features. Designed fully responsive UI for
+                            seamless mobile experience.</p>
                         <small>Flutter • Dart • REST APIs • Responsive UI</small>
                     </div>
                 </div>
 
                 <!-- Portfolio Item 2 -->
-                <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-item reveal fade-up delay-2" data-category="mobile">
                     <div class="portfolio-image">
                         <div class="placeholder">Women SOS</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Women SOS - Safety Application</h3>
-                        <p>Developed real-time emergency app with SOS response under 10 seconds. Implemented live location sharing and instant SOS alerts. Integrated OpenStreetMap API for location tracking and MongoDB for data storage.</p>
+                        <p>Developed real-time emergency app with SOS response under 10 seconds. Implemented live
+                            location sharing and instant SOS alerts. Integrated OpenStreetMap API for location tracking
+                            and MongoDB for data storage.</p>
                         <small>Flutter • Node.js • OpenStreetMap • MongoDB</small>
                     </div>
                 </div>
 
                 <!-- Portfolio Item 3 -->
-                <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-item reveal fade-up delay-3" data-category="mobile">
                     <div class="portfolio-image">
                         <div class="placeholder">E-Commerce</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>E-Commerce Mobile Application</h3>
-                        <p>Created e-commerce app managing 20+ products with 25% faster load time. Implemented product listing, cart management, and dynamic data synchronization. Focused on smooth navigation and responsive UI design.</p>
+                        <p>Created e-commerce app managing 20+ products with 25% faster load time. Implemented product
+                            listing, cart management, and dynamic data synchronization. Focused on smooth navigation and
+                            responsive UI design.</p>
                         <small>Flutter • REST APIs • Provider State Management</small>
                     </div>
                 </div>
 
                 <!-- Portfolio Item 4 -->
-                <div class="portfolio-item" data-category="achievements">
+                <div class="portfolio-item reveal fade-up delay-1" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="placeholder">Hospital System</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Hospital Management System</h3>
+                        <p>Built a full-stack web application designed to streamline patient records, administrative
+                            operations, and automated appointment scheduling. Established a secure, modular backend
+                            architecture for data handling and optimized MongoDB indexing for lightning-fast database
+                            queries.</p>
+                        <small>React • Node.js • Express.js • MongoDB</small>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item reveal fade-up delay-2" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="placeholder">Hotel Booking</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Hotel Booking Website</h3>
+                        <p>Developed a responsive hotel booking platform with hotel listing and booking functionality.
+                            Created user-friendly interfaces and integrated backend APIs for booking management.
+                            Improved application responsiveness and UI performance.</p>
+                        <small>React.js • Node.js • Express.js • MongoDB</small>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item reveal fade-up delay-3" data-category="achievements">
                     <div class="portfolio-image">
                         <div class="placeholder">Prompt Wars</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Prompt Wars Hackathon</h3>
-                        <p>Participated in on-site hackathon at Google Office, Gurugram. Showcased problem-solving skills and innovative thinking in competitive environment.</p>
+                        <p>Participated in on-site hackathon at Google Office, Gurugram. Showcased problem-solving
+                            skills and innovative thinking in competitive environment.</p>
                         <small>Google Office • Hackathon • Innovation</small>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item" data-category="achievements">
+                <!-- Portfolio Item 7 -->
+                <div class="portfolio-item reveal fade-up delay-1" data-category="achievements">
                     <div class="portfolio-image">
                         <div class="placeholder">5+ Projects</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>5+ Flutter Applications</h3>
-                        <p>Built over 5 personal Flutter applications including academic and self-initiated projects. Demonstrates consistent growth and commitment to mobile development.</p>
+                        <p>Built over 5 personal Flutter applications including academic and self-initiated projects.
+                            Demonstrates consistent growth and commitment to mobile development.</p>
                         <small>Flutter • Dart • Cross-Platform</small>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 6 -->
-                <div class="portfolio-item" data-category="achievements">
+                <!-- Portfolio Item 8 -->
+                <div class="portfolio-item reveal fade-up delay-2" data-category="achievements">
                     <div class="portfolio-image">
-                        <div class="placeholder">100+ DSA</div>
+                        <div class="placeholder">200+ DSA</div>
                     </div>
                     <div class="portfolio-info">
-                        <h3>100+ DSA Problems Solved</h3>
-                        <p>Solved more than 100 Data Structures and Algorithms problems using C++. Strong algorithmic thinking and problem-solving capabilities.</p>
+                        <h3>200+ DSA Problems Solved</h3>
+                        <p>Solved more than 200 Data Structures and Algorithms problems using C++. Strong algorithmic
+                            thinking and problem-solving capabilities.</p>
                         <small>C++ • DSA • Algorithm Design</small>
                     </div>
                 </div>
@@ -202,21 +259,21 @@
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications & Awards</h2>
+            <h2 class="section-title reveal fade-up">Certifications & Awards</h2>
             <div class="certifications-grid">
-                <div class="cert-card">
+                <div class="cert-card reveal fade-up delay-1">
                     <div class="cert-icon">🏆</div>
                     <h3>Flutter Development Certification</h3>
                     <p class="cert-issuer">Google</p>
                     <p class="cert-date">October 2025</p>
                 </div>
-                <div class="cert-card">
+                <div class="cert-card reveal fade-up delay-2">
                     <div class="cert-icon">💼</div>
                     <h3>Software Engineering Virtual Experience</h3>
                     <p class="cert-issuer">J.P. Morgan</p>
                     <p class="cert-date">October 2025</p>
                 </div>
-                <div class="cert-card">
+                <div class="cert-card reveal fade-up delay-3">
                     <div class="cert-icon">🎓</div>
                     <h3>B.Tech in Computer Science</h3>
                     <p class="cert-issuer">Parul University, Vadodara</p>
@@ -232,10 +289,10 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p class="contact-subtitle">Have a project in mind? Let's create something amazing</p>
+            <h2 class="section-title reveal fade-up">Let's Work Together</h2>
+            <p class="contact-subtitle reveal fade-up delay-1">Have a project in mind? Let's create something amazing</p>
             <div class="contact-content">
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form reveal fade-left delay-2" id="contactForm">
                     <div class="form-group">
                         <label for="name" class="sr-only">Your Name</label>
                         <input type="text" id="name" placeholder="Your Name" required>
@@ -254,7 +311,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
-                <div class="contact-info">
+                <div class="contact-info reveal fade-right delay-2">
                     <div class="contact-item">
                         <h3>Email</h3>
                         <p><a href="mailto:tanujdarokar777@gmail.com">tanujdarokar777@gmail.com</a></p>
@@ -271,8 +328,10 @@
                         <h3>Connect With Me</h3>
                         <div class="socials">
                             <a href="https://github.com/tanujdarokar" target="_blank" class="social-icon">GitHub</a>
-                            <a href="https://www.linkedin.com/in/tanuj-darokar-626292288" target="_blank" class="social-icon">LinkedIn</a>
-                            <a href="https://www.google.com/maps/place/Pandhurna" target="_blank" class="social-icon">Location</a>
+                            <a href="https://www.linkedin.com/in/tanuj-darokar-626292288" target="_blank"
+                                class="social-icon">LinkedIn</a>
+                            <a href="https://www.google.com/maps/place/Pandhurna" target="_blank"
+                                class="social-icon">Location</a>
                         </div>
                     </div>
                 </div>
@@ -296,7 +355,11 @@
         </div>
     </footer>
 
-    <script src="js/smooth-scroll.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">↑</button>
+
+    <script src="js/smooth-scroll.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
+
 </html>
