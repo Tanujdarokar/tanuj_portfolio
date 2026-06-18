@@ -28,12 +28,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h1>Portfolio</h1>
+                <h1 style='font-size: 2rem;color: grey;'>TANUJ DAROKAR<span>.</span></h1>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Achievements</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
@@ -43,6 +45,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -71,56 +74,19 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <div class="section-label reveal fade-up">01 / ABOUT</div>
             <h2 class="section-title reveal fade-up">About Me</h2>
             <div class="about-content">
-                <div class="about-text reveal fade-left">
-                    <p>Final-year Computer Science student and passionate Flutter Developer with hands-on experience
-                        building 3+ cross-platform mobile applications. Strong foundation in Dart, Firebase, REST APIs,
-                        and Data Structures & Algorithms.</p>
-                    <p>Seeking an entry-level Flutter Developer role to build scalable, user-focused mobile solutions.
-                        Experienced in designing responsive UIs, API integration, authentication, and MVC architecture.
-                        Solved 100+ DSA problems with strong problem-solving skills.</p>
-                    <div class="skills reveal fade-up delay-1">
-                        <h3>Programming Languages</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Dart</span>
-                            <span class="skill-tag">C++</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                        </div>
-                    </div>
-                    <div class="skills reveal fade-up delay-2">
-                        <h3>Frameworks & Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">Provider</span>
-                            <span class="skill-tag">Riverpod</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Express.js</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Android Studio</span>
-                        </div>
-                    </div>
-                    <div class="skills reveal fade-up delay-3">
-                        <h3>Core Competencies</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">DSA</span>
-                            <span class="skill-tag">OOP</span>
-                            <span class="skill-tag">API Integration</span>
-                            <span class="skill-tag">Authentication</span>
-                            <span class="skill-tag">JSON Parsing</span>
-                            <span class="skill-tag">MVC Architecture</span>
-                            <span class="skill-tag">Responsive Design</span>
-                        </div>
-                    </div>
+                <div class="about-text reveal fade-up">
+                    <p class="lead-text">Crafting high-performance digital experiences with code and creativity.</p>
+                    <p>I am a driven Software Engineer specializing in mobile development with <strong>Flutter</strong> and full-stack web solutions using the <strong>MERN stack</strong>. Currently a final-year Computer Science student, I thrive on turning complex problems into elegant, user-centric applications.</p>
+                    <p>My journey is fueled by a curiosity for emerging technologies and a commitment to writing clean, maintainable code. From architecting scalable backends to crafting pixel-perfect mobile UIs, I focus on delivering seamless experiences that solve real-world problems.</p>
                 </div>
-                <div class="about-image reveal fade-right">
-                    <div class="placeholder-image">Your Image Here</div>
+                <div class="about-image reveal scale-up">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image">Your Image Here</div>
+                        <div class="image-glow"></div>
+                    </div>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -128,125 +94,247 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-label reveal fade-up">02 / SKILLS</div>
+            <h2 class="section-title reveal fade-up">Tech I work with</h2>
+            <div class="skills-grid">
+                <!-- Languages -->
+                <div class="skill-card reveal fade-up delay-1">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>LANGUAGES</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+                <!-- Frameworks -->
+                <div class="skill-card reveal fade-up delay-2">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>FRAMEWORKS</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Flutter</span>
+                        <span class="skill-tag featured">React.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+                <!-- Databases -->
+                <div class="skill-card reveal fade-up delay-3">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>DATABASES</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Firebase Firestore</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                <!-- State Management -->
+                <div class="skill-card reveal fade-up delay-1">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>STATE MANAGEMENT</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Provider</span>
+                        <span class="skill-tag">Riverpod</span>
+                        <span class="skill-tag">MVC Architecture</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="skill-card reveal fade-up delay-2">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>TOOLS</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+                <!-- Core -->
+                <div class="skill-card reveal fade-up delay-3">
+                    <div class="skill-card-header">
+                        <span class="skill-icon"></span>
+                        <h3>CORE</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">DSA</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Auth & JWT</span>
+                        <span class="skill-tag">Responsive UI</span>
+                        <span class="skill-tag">JSON Parsing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title reveal fade-up">Featured Projects</h2>
-            <div class="filter-buttons reveal fade-up delay-1">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="achievements">Achievements</button>
-            </div>
+            <div class="section-label reveal fade-up">03 / PROJECTS</div>
+            <h2 class="section-title reveal fade-up">Things I've built</h2>
+
             <div class="portfolio-grid">
-                <!-- Portfolio Item 1 -->
+                <!-- Project 1: Women SOS -->
+                <div class="portfolio-item reveal fade-up" data-category="mobile">
+                    <div class="project-card-header">
+                        <div class="project-icon">🆘</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">Flutter - Safety App</span>
+                            <span class="badge badge-featured">Featured</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Women SOS</h3>
+                        <p>Real-time emergency safety application with instant SOS response under <strong>10 seconds</strong>. Live location sharing with OpenStreetMap API and instant alerts to trusted contacts.</p>
+                        <div class="project-metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">< 10s</span>
+                                <span class="metric-label">SOS Response</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">Live</span>
+                                <span class="metric-label">Location Tracking</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">OpenStreetMap</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: AI Study Assistance App -->
                 <div class="portfolio-item reveal fade-up delay-1" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="placeholder">AI Study</div>
+                    <div class="project-card-header">
+                        <div class="project-icon">🤖</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">Flutter - AI App</span>
+                            <span class="badge badge-featured">50+ Users</span>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>AI Study Assistance App</h3>
-                        <p>Built AI-powered study companion used by 50+ students. Integrated external REST APIs for
-                            dynamic study recommendations and task management features. Designed fully responsive UI for
-                            seamless mobile experience.</p>
-                        <small>Flutter • Dart • REST APIs • Responsive UI</small>
+                        <p>AI-powered study companion adopted by <strong>50+ students</strong>. Dynamic ML recommendation endpoints via REST APIs for personalized task management, built with MVC architecture.</p>
+                        <div class="project-metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">50+</span>
+                                <span class="metric-label">Active Students</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">MVC</span>
+                                <span class="metric-label">Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">JSON</span>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item reveal fade-up delay-2" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="placeholder">Women SOS</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Women SOS - Safety Application</h3>
-                        <p>Developed real-time emergency app with SOS response under 10 seconds. Implemented live
-                            location sharing and instant SOS alerts. Integrated OpenStreetMap API for location tracking
-                            and MongoDB for data storage.</p>
-                        <small>Flutter • Node.js • OpenStreetMap • MongoDB</small>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item reveal fade-up delay-3" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="placeholder">E-Commerce</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>E-Commerce Mobile Application</h3>
-                        <p>Created e-commerce app managing 20+ products with 25% faster load time. Implemented product
-                            listing, cart management, and dynamic data synchronization. Focused on smooth navigation and
-                            responsive UI design.</p>
-                        <small>Flutter • REST APIs • Provider State Management</small>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item reveal fade-up delay-1" data-category="web">
-                    <div class="portfolio-image">
-                        <div class="placeholder">Hospital System</div>
+                <!-- Project 3: Hospital Management System -->
+                <div class="portfolio-item reveal fade-up delay-2" data-category="web">
+                    <div class="project-card-header">
+                        <div class="project-icon">🏥</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">MERN - Web App</span>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Hospital Management System</h3>
-                        <p>Built a full-stack web application designed to streamline patient records, administrative
-                            operations, and automated appointment scheduling. Established a secure, modular backend
-                            architecture for data handling and optimized MongoDB indexing for lightning-fast database
-                            queries.</p>
-                        <small>React • Node.js • Express.js • MongoDB</small>
+                        <p>Full-stack web application for patient records, admin operations, and appointment scheduling. <strong>Secure modular backend</strong> with optimized MongoDB indexing.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item reveal fade-up delay-2" data-category="web">
-                    <div class="portfolio-image">
-                        <div class="placeholder">Hotel Booking</div>
+                <!-- Project 4: E-Commerce Application -->
+                <div class="portfolio-item reveal fade-up delay-3" data-category="mobile">
+                    <div class="project-card-header">
+                        <div class="project-icon">🛒</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">Flutter - E-Commerce</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>E-Commerce Application</h3>
+                        <p>Mobile e-commerce app managing <strong>20+ products</strong> with <strong>25% faster load time</strong> through optimized async API calls. Cart management and dynamic data sync.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Provider</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Hotel Booking Website -->
+                <div class="portfolio-item reveal fade-up delay-4" data-category="web">
+                    <div class="project-card-header">
+                        <div class="project-icon">🏨</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">MERN - Web App</span>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Hotel Booking Website</h3>
-                        <p>Developed a responsive hotel booking platform with hotel listing and booking functionality.
-                            Created user-friendly interfaces and integrated backend APIs for booking management.
-                            Improved application responsiveness and UI performance.</p>
-                        <small>React.js • Node.js • Express.js • MongoDB</small>
+                        <p>Responsive hotel booking platform with hotel listing and booking functionality. <strong>User-friendly interfaces</strong> with integrated backend APIs for booking management.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 6 -->
-                <div class="portfolio-item reveal fade-up delay-3" data-category="achievements">
-                    <div class="portfolio-image">
-                        <div class="placeholder">Prompt Wars</div>
+                <!-- Project 6: Amazon Clone -->
+                <div class="portfolio-item reveal fade-up delay-5" data-category="web">
+                    <div class="project-card-header">
+                        <div class="project-icon">📦</div>
+                        <div class="project-badges">
+                            <span class="badge badge-outline">HTML/CSS - Frontend</span>
+                        </div>
                     </div>
                     <div class="portfolio-info">
-                        <h3>Prompt Wars Hackathon</h3>
-                        <p>Participated in on-site hackathon at Google Office, Gurugram. Showcased problem-solving
-                            skills and innovative thinking in competitive environment.</p>
-                        <small>Google Office • Hackathon • Innovation</small>
+                        <h3>Amazon Clone</h3>
+                        <p>E-commerce frontend inspired by Amazon. Responsive layouts, navigation bar, and product listing sections. Focus on <strong>UI/UX and responsive</strong> design practices.</p>
                     </div>
-                </div>
-
-                <!-- Portfolio Item 7 -->
-                <div class="portfolio-item reveal fade-up delay-1" data-category="achievements">
-                    <div class="portfolio-image">
-                        <div class="placeholder">5+ Projects</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>5+ Flutter Applications</h3>
-                        <p>Built over 5 personal Flutter applications including academic and self-initiated projects.
-                            Demonstrates consistent growth and commitment to mobile development.</p>
-                        <small>Flutter • Dart • Cross-Platform</small>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 8 -->
-                <div class="portfolio-item reveal fade-up delay-2" data-category="achievements">
-                    <div class="portfolio-image">
-                        <div class="placeholder">200+ DSA</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>200+ DSA Problems Solved</h3>
-                        <p>Solved more than 200 Data Structures and Algorithms problems using C++. Strong algorithmic
-                            thinking and problem-solving capabilities.</p>
-                        <small>C++ • DSA • Algorithm Design</small>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">Bootstrap</span>
                     </div>
                 </div>
             </div>
@@ -256,28 +344,48 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
+
+    <!-- Achievements Section -->
+    <section id="certifications" class="achievements">
         <div class="container">
-            <h2 class="section-title reveal fade-up">Certifications & Awards</h2>
-            <div class="certifications-grid">
-                <div class="cert-card reveal fade-up delay-1">
-                    <div class="cert-icon">🏆</div>
-                    <h3>Flutter Development Certification</h3>
-                    <p class="cert-issuer">Google</p>
-                    <p class="cert-date">October 2025</p>
+            <div class="section-label reveal fade-up">04 / ACHIEVEMENTS</div>
+            <h2 class="section-title reveal fade-up">Milestones & Recognition</h2>
+            <div class="achievements-grid">
+                <!-- Achievement 1 -->
+                <div class="achievement-card reveal fade-up delay-1">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Prompt Wars Hackathon</h3>
+                    <p>Selected and competed at the Prompt Wars hackathon held on-site at the <strong>Google Office, Gurugram.</strong></p>
                 </div>
-                <div class="cert-card reveal fade-up delay-2">
-                    <div class="cert-icon">💼</div>
-                    <h3>Software Engineering Virtual Experience</h3>
-                    <p class="cert-issuer">J.P. Morgan</p>
-                    <p class="cert-date">October 2025</p>
+                <!-- Achievement 2 -->
+                <div class="achievement-card reveal fade-up delay-2">
+                    <div class="achievement-icon">💻</div>
+                    <h3>200+ DSA Problems</h3>
+                    <p>Solved over <strong>200+ Data Structures & Algorithms</strong> problems on online judges using C++.</p>
                 </div>
-                <div class="cert-card reveal fade-up delay-3">
-                    <div class="cert-icon">🎓</div>
-                    <h3>B.Tech in Computer Science</h3>
-                    <p class="cert-issuer">Parul University, Vadodara</p>
-                    <p class="cert-date">Expected June 2027 | CGPA: 6.5/10</p>
+                <!-- Achievement 3 -->
+                <div class="achievement-card reveal fade-up delay-3">
+                    <div class="achievement-icon">📱</div>
+                    <h3>5+ Apps Shipped</h3>
+                    <p>Autonomously built and shipped over <strong>5 personal and academic</strong> mobile software projects.</p>
+                </div>
+                <!-- Achievement 4 -->
+                <div class="achievement-card reveal fade-up delay-1">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Google Certified</h3>
+                    <p>Flutter Development Certification from <strong>Google</strong>, October 2025.</p>
+                </div>
+                <!-- Achievement 5 -->
+                <div class="achievement-card reveal fade-up delay-2">
+                    <div class="achievement-icon">🏛️</div>
+                    <h3>J.P. Morgan & Accenture</h3>
+                    <p>Completed Software Engineering Virtual Experience with <strong>J.P. Morgan & Accenture.</strong></p>
+                </div>
+                <!-- Achievement 6 -->
+                <div class="achievement-card reveal fade-up delay-3">
+                    <div class="achievement-icon">🍃</div>
+                    <h3>MongoDB Certified</h3>
+                    <p>Certified MongoDB Developer, validating expertise in <strong>NoSQL database design</strong>, 2025.</p>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -285,6 +393,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
