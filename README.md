@@ -8,7 +8,7 @@ I am a final-year Computer Science student at Parul University, Vadodara, and a 
 
 - 🎓 **B.Tech in Computer Science** - Parul University (Expected June 2027)
 - 📱 **3+ Cross-platform mobile applications built**
-- 🧠 **100+ DSA problems solved**
+- 🧠 **300+ DSA problems solved**
 - 🛠️ **Focused on building scalable and user-focused solutions**
 
 ## 🛠️ Tech Stack
