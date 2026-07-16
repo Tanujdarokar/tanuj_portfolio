@@ -2,473 +2,1765 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tanuj Darokar - Flutter & MERN Stack Developer | Full-Stack Software Engineer">
-    <title>Tanuj Darokar | Full-Stack Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanuj Darokar — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c1219;
+      --bg-elev: #121a24;
+      --card: #171f2b;
+      --card-hover: #1c2531;
+      --border: #263140;
+      --border-soft: #1e2733;
+      --text: #e8edf3;
+      --text-dim: #90a0b3;
+      --text-faint: #5c6b7e;
+      --accent: #e5a54a;
+      --accent-dim: #7a6339;
+      --teal: #4bb08a;
+      --rose: #d9695c;
+      --radius: 10px;
+      --display: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 20%), rgba(229, 165, 74, 0.08), transparent 70%);
+      transition: background-position .05s linear;
+    }
+
+    /* scroll progress bar */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+      z-index: 100;
+      transition: width .08s linear;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .mono {
+      font-family: var(--mono);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #0c1219;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 18, 25, 0.82);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .brand .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 3px rgba(75, 176, 138, 0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .nav-links a {
+      transition: color .15s;
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+      background: var(--accent);
+      transition: width .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 9px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(229, 165, 74, 0.25);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 88px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .load-item {
+      opacity: 0;
+      animation: riseIn .7s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .load-item.d1 {
+      animation-delay: .05s;
+    }
+
+    .load-item.d2 {
+      animation-delay: .16s;
+    }
+
+    .load-item.d3 {
+      animation-delay: .27s;
+    }
+
+    .load-item.d4 {
+      animation-delay: .38s;
+    }
+
+    .load-item.d5 {
+      animation-delay: .49s;
+    }
+
+    .load-item.d6 {
+      animation-delay: .6s;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--teal);
+      border: 1px solid rgba(75, 176, 138, 0.35);
+      background: rgba(75, 176, 138, 0.07);
+      padding: 6px 12px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.35;
+      }
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.05;
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .role {
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--text-dim);
+      margin: 18px 0 22px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero p.desc {
+      color: var(--text-dim);
+      font-size: 15.5px;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 13.5px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .18s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0c1219;
+      font-weight: 500;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 26px rgba(229, 165, 74, 0.28);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: transform .18s ease, border-color .18s, color .18s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: var(--display);
+      font-size: 26px;
+      color: var(--text);
+    }
+
+    .stat span {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ---------- ARCHITECTURE DIAGRAM ---------- */
+    .diagram-frame {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .diagram-frame .frame-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-faint);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .diagram-frame .frame-label .lights span {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      margin-left: 5px;
+    }
+
+    #arch-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .node-box {
+      fill: var(--card);
+      stroke: var(--border);
+      stroke-width: 1;
+    }
+
+    .node-label {
+      font-family: var(--mono);
+      fill: var(--text);
+      font-size: 12px;
+    }
+
+    .node-sub {
+      font-family: var(--mono);
+      fill: var(--text-faint);
+      font-size: 9.5px;
+    }
+
+    .flow-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.6;
+      stroke-dasharray: 5 5;
+      opacity: 0.75;
+      animation: flow 1.6s linear infinite;
+    }
+
+    .flow-line.teal {
+      stroke: var(--teal);
+    }
+
+    @keyframes flow {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+
+    .ping {
+      fill: var(--teal);
+      animation: pulse 2s infinite;
+    }
+
+    /* ---------- SECTION HEADERS ---------- */
+    .section-pad {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      margin-bottom: 52px;
+      max-width: 640px;
+    }
+
+    .section-head .tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: 32px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    /* ---------- STACK (SKILLS) ---------- */
+    .stack {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .stack-layer {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border-bottom: 1px solid var(--border-soft);
+      background: var(--bg-elev);
+      transition: background .2s;
+    }
+
+    .stack-layer:last-child {
+      border-bottom: none;
+    }
+
+    .stack-layer:hover {
+      background: var(--card-hover);
+    }
+
+    .layer-meta {
+      padding: 24px 26px;
+      border-right: 1px solid var(--border-soft);
+    }
+
+    .layer-meta .layer-index {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    .layer-meta h3 {
+      font-size: 17px;
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    .layer-items {
+      padding: 24px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: center;
+    }
+
+    .pill {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all .15s;
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform .15s ease-out, border-color .2s, box-shadow .2s;
+    }
+
+    .proj-card:hover {
+      border-color: var(--accent-dim);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .proj-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .proj-top h3 {
+      font-size: 19px;
+      color: var(--text);
+    }
+
+    .status-chip {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--teal);
+      border: 1px solid rgba(75, 176, 138, 0.3);
+      background: rgba(75, 176, 138, 0.06);
+      padding: 4px 9px;
+      border-radius: 100px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-chip .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .proj-card.sos .status-chip {
+      color: var(--rose);
+      border-color: rgba(217, 105, 92, 0.3);
+      background: rgba(217, 105, 92, 0.06);
+    }
+
+    .proj-card.sos .status-chip .dot {
+      background: var(--rose);
+    }
+
+    .proj-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .proj-stack span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-faint);
+      border: 1px solid var(--border-soft);
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    .proj-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .proj-list li {
+      font-size: 13.8px;
+      color: var(--text-dim);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .proj-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    .proj-link {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-soft);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .proj-link svg {
+      width: 13px;
+      height: 13px;
+      transition: transform .15s;
+    }
+
+    .proj-card:hover .proj-link svg {
+      transform: translate(2px, -2px);
+    }
+
+    /* ---------- MORE REPOS ---------- */
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .repo-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      transition: transform .18s ease, border-color .2s, box-shadow .2s;
+    }
+
+    .repo-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-dim);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    .repo-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .repo-top a {
+      font-family: var(--mono);
+      font-size: 14.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .repo-top a:hover {
+      color: var(--accent);
+    }
+
+    .repo-top a svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0;
+      transition: opacity .15s, transform .15s;
+      flex-shrink: 0;
+    }
+
+    .repo-top a:hover svg {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    .repo-badge {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--text-faint);
+      border: 1px solid var(--border-soft);
+      padding: 2px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .repo-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      min-height: 18px;
+    }
+
+    .repo-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-faint);
+    }
+
+    .lang-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .lang-dart {
+      background: #4bb08a;
+    }
+
+    .lang-css {
+      background: #8f7fe0;
+    }
+
+    .lang-html {
+      background: #e2734c;
+    }
+
+    .lang-js {
+      background: #e2c94c;
+    }
+
+    .repo-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color .2s, color .2s;
+    }
+
+    .repo-more:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .info-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .achieve-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .achieve-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .achieve-item .idx {
+      font-family: var(--mono);
+      color: var(--text-faint);
+      font-size: 12px;
+      padding-top: 2px;
+    }
+
+    .achieve-item p {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .achieve-item strong {
+      color: var(--text);
+    }
+
+    .edu-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+    }
+
+    .edu-card.spaced {
+      margin-bottom: 22px;
+    }
+
+    .more-builds {
+      margin-top: 64px;
+    }
+
+    .section-head.compact {
+      margin-bottom: 32px;
+    }
+
+    .section-head.compact h2 {
+      font-size: 24px;
+    }
+
+    .edu-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .edu-top h3 {
+      font-size: 19px;
+      color: var(--text);
+    }
+
+    .edu-gpa {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .edu-sub {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .edu-dates {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-bottom: 18px;
+    }
+
+    .edu-course {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .edu-course span {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-dim);
+      border: 1px solid var(--border-soft);
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .cert-list {
+      list-style: none;
+    }
+
+    .cert-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .cert-list li:last-child {
+      border-bottom: none;
+    }
+
+    .cert-list strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .cert-list span {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-faint);
+    }
+
+    /* ---------- CONTACT / FOOTER ---------- */
+    .contact {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .contact p {
+      color: var(--text-dim);
+      max-width: 460px;
+      margin: 0 auto 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      font-family: var(--mono);
+      font-size: 13.5px;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 11px 20px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .15s;
+      background: var(--card);
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 36px 0 60px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px) scale(.98);
+      transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .proj-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .proj-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(220px circle at var(--px, 50%) var(--py, 50%), rgba(229, 165, 74, 0.12), transparent 60%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+
+    .proj-card:hover::before {
+      opacity: 1;
+    }
+
+    .proj-card {
+      position: relative;
+    }
+
+    .magnetic {
+      will-change: transform;
+    }
+
+    #arch-svg .node-box {
+      opacity: 0;
+      transform-origin: center;
+      animation: nodeIn .5s ease forwards;
+    }
+
+    #arch-svg .node-box.delay-1 { animation-delay: .1s; }
+    #arch-svg .node-box.delay-2 { animation-delay: .2s; }
+    #arch-svg .node-box.delay-3 { animation-delay: .35s; }
+    #arch-svg .node-box.delay-4 { animation-delay: .5s; }
+    #arch-svg .node-box.delay-5 { animation-delay: .55s; }
+    #arch-svg .node-box.delay-6 { animation-delay: .4s; }
+
+    #arch-svg .node-label,
+    #arch-svg .node-sub {
+      opacity: 0;
+      animation: fadeText .4s ease forwards;
+    }
+
+    #arch-svg .node-label.delay-1,
+    #arch-svg .node-sub.delay-1 { animation-delay: .35s; }
+    #arch-svg .node-label.delay-2,
+    #arch-svg .node-sub.delay-2 { animation-delay: .4s; }
+    #arch-svg .node-label.delay-3,
+    #arch-svg .node-sub.delay-3 { animation-delay: .45s; }
+    #arch-svg .node-label.delay-4,
+    #arch-svg .node-sub.delay-4 { animation-delay: .5s; }
+    #arch-svg .node-label.delay-5,
+    #arch-svg .node-sub.delay-5 { animation-delay: .6s; }
+    #arch-svg .node-label.delay-6,
+    #arch-svg .node-sub.delay-6 { animation-delay: .65s; }
+    #arch-svg .node-label.delay-7,
+    #arch-svg .node-sub.delay-7 { animation-delay: .75s; }
+    #arch-svg .node-label.delay-8,
+    #arch-svg .node-sub.delay-8 { animation-delay: .8s; }
+    #arch-svg .node-label.delay-9,
+    #arch-svg .node-sub.delay-9 { animation-delay: .85s; }
+    #arch-svg .node-label.delay-10,
+    #arch-svg .node-sub.delay-10 { animation-delay: .7s; }
+
+    @keyframes nodeIn {
+      from {
+        opacity: 0;
+        transform: scale(.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      #arch-svg .node-box,
+      #arch-svg .node-label,
+      #arch-svg .node-sub {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .diagram-frame {
+        order: -1;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .stack-layer {
+        grid-template-columns: 1fr;
+      }
+
+      .layer-meta {
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+        padding-bottom: 14px;
+      }
+
+      .contact {
+        padding: 48px 24px;
+      }
+
+      .stat-row {
+        gap: 26px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Background Gradient Blobs -->
-    <div class="blob-container">
-        <div class="blob blob-1" id="blob1"></div>
-        <div class="blob blob-2" id="blob2"></div>
-        <div class="blob blob-3" id="blob3"></div>
+  <div id="progress"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="brand"><span class="dot"></span>tanuj.darokar</a>
+      <div class="nav-links">
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:tanujdarokar777@gmail.com">Say hello</a>
     </div>
+  </nav>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <h1 style='font-size: 2rem;color: grey;'>TANUJ DAROKAR<span>.</span></h1>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#portfolio" class="nav-link">Projects</a></li>
-                <li><a href="#certifications" class="nav-link">Achievements</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow load-item d1"><span class="dot"></span>OPEN TO FRESHER SDE / FLUTTER ROLES</div>
+          <h1 class="load-item d2">Tanuj Darokar builds the <span>full stack</span>, front door to database.</h1>
+          <div class="role load-item d3">Software Engineer — Flutter · React · Node.js · MongoDB</div>
+          <p class="desc load-item d3">Final-year CS student who ships working products instead of tutorials — a
+            real-time safety app, two AI platforms, and a hospital management system — backed by 300+ solved DSA
+            problems in C++.</p>
+          <div class="hero-ctas load-item d4">
+            <a class="btn btn-primary magnetic" href="#projects">View projects →</a>
+            <a class="btn btn-ghost magnetic" href="#contact">Get resume</a>
+          </div>
+          <div class="stat-row load-item d5">
+            <div class="stat"><b data-count="13" data-suffix="+">0</b><span>Apps shipped</span></div>
+            <div class="stat"><b data-count="300" data-suffix="+">0</b><span>DSA problems</span></div>
+            <div class="stat"><b data-count="2" data-suffix="">0</b><span>AI platforms built</span></div>
+            <div class="stat"><b>7th</b><span>Semester, B.Tech CSE</span></div>
+          </div>
         </div>
-    </nav>
 
+        <div class="diagram-frame load-item d6">
+          <div class="frame-label">
+            <span>system_overview.svg</span>
+            <div class="lights"><span></span><span></span><span></span></div>
+          </div>
+          <svg id="arch-svg" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Client layer -->
+            <rect class="node-box delay-1" x="20" y="20" width="120" height="46" rx="6" />
+            <text class="node-label delay-1" x="34" y="42">Flutter App</text>
+            <text class="node-sub delay-2" x="34" y="56">iOS · Android</text>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-flex">
-                <div class="hero-content">
-                    <h1 class="hero-title reveal fade-up">Hi, I'm <span>Tanuj Darokar</span></h1>
-                    <p class="hero-subtitle reveal fade-up delay-1">Building scalable solutions. Focused on <span id="typewriter" class="typewriter-text"></span><span class="cursor"></span></p>
-                    <div class="hero-buttons reveal fade-up delay-2">
-                        <a href="#portfolio" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-animation reveal scale-up delay-3">
-                    <div class="animated-circle"></div>
-                    <div class="animated-circle"></div>
-                    <div class="animated-circle"></div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
+            <rect class="node-box delay-2" x="160" y="20" width="120" height="46" rx="6" />
+            <text class="node-label delay-3" x="174" y="42">React Web</text>
+            <text class="node-sub delay-4" x="174" y="56">Responsive UI</text>
+
+            <!-- REST API -->
+            <rect class="node-box delay-3" x="90" y="122" width="150" height="46" rx="6" />
+            <text class="node-label delay-5" x="104" y="144">REST API</text>
+            <text class="node-sub delay-6" x="104" y="158">Node.js · Express · JWT</text>
+
+            <!-- Data layer -->
+            <rect class="node-box delay-4" x="30" y="224" width="120" height="46" rx="6" />
+            <text class="node-label delay-7" x="44" y="246">MongoDB</text>
+            <text class="node-sub delay-8" x="44" y="260">Schema design</text>
+
+            <rect class="node-box delay-5" x="180" y="224" width="120" height="46" rx="6" />
+            <text class="node-label delay-8" x="194" y="246">Firebase</text>
+            <text class="node-sub delay-9" x="194" y="260">Auth · Firestore</text>
+
+            <!-- external -->
+            <rect class="node-box delay-6" x="320" y="122" width="120" height="46" rx="6" />
+            <text class="node-label delay-10" x="334" y="144">AI / ML</text>
+            <text class="node-sub delay-10" x="334" y="158">Gemini · Groq · NLP</text>
+
+            <!-- connections -->
+            <path class="flow-line" d="M80,66 L165,122" />
+            <path class="flow-line" d="M220,66 L165,122" />
+            <path class="flow-line teal" d="M165,168 L90,224" />
+            <path class="flow-line teal" d="M165,168 L240,224" />
+            <path class="flow-line" d="M240,145 L320,145" />
+
+            <circle class="ping" cx="165" cy="122" r="3.5" />
+            <circle class="ping" cx="165" cy="168" r="3.5" />
+          </svg>
         </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-label reveal fade-up">01 / ABOUT</div>
-            <h2 class="section-title reveal fade-up">About Me</h2>
-            <div class="about-content">
-                <div class="about-text reveal fade-up">
-                    <p class="lead-text">Crafting high-performance digital experiences with code and creativity.</p>
-                    <p>I am a driven Software Engineer specializing in mobile development with <strong>Flutter</strong> and full-stack web solutions using the <strong>MERN stack</strong>. Currently a final-year Computer Science student, I thrive on turning complex problems into elegant, user-centric applications.</p>
-                    <p>My journey is fueled by a curiosity for emerging technologies and a commitment to writing clean, maintainable code. From architecting scalable backends to crafting pixel-perfect mobile UIs, I focus on delivering seamless experiences that solve real-world problems.</p>
-                </div>
-                <div class="about-image reveal scale-up">
-                    <div class="image-wrapper">
-                        <div class="placeholder-image">Your Image Here</div>
-                        <div class="image-glow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
+    <hr class="divider wrap" />
+
+    <!-- STACK / SKILLS -->
+    <section class="section-pad wrap" id="stack">
+      <div class="section-head reveal">
+        <span class="tag">Technical stack</span>
+        <h2>Built layer by layer</h2>
+        <p>The same way Tanuj architects his projects — client on top, logic in the middle, data underneath — here's
+          what he reaches for at each layer.</p>
+      </div>
+
+      <div class="stack reveal">
+        <div class="stack-layer">
+          <div class="layer-meta"><span class="layer-index">01 · CLIENT</span>
+            <h3>Languages & UI</h3>
+          </div>
+          <div class="layer-items">
+            <span class="pill">Dart</span><span class="pill">JavaScript</span><span class="pill">C++</span>
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">Flutter</span>
+            <span class="pill">React.js</span><span class="pill">Bootstrap</span>
+          </div>
         </div>
+        <div class="stack-layer">
+          <div class="layer-meta"><span class="layer-index">02 · STATE</span>
+            <h3>Architecture</h3>
+          </div>
+          <div class="layer-items">
+            <span class="pill">Provider</span><span class="pill">Riverpod</span><span class="pill">Redux / Context
+              API</span>
+            <span class="pill">MVC Architecture</span><span class="pill">setState</span>
+          </div>
+        </div>
+        <div class="stack-layer">
+          <div class="layer-meta"><span class="layer-index">03 · SERVER</span>
+            <h3>APIs & Logic</h3>
+          </div>
+          <div class="layer-items">
+            <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">REST API
+              Design</span>
+            <span class="pill">JWT Auth</span><span class="pill">Python</span>
+          </div>
+        </div>
+        <div class="stack-layer">
+          <div class="layer-meta"><span class="layer-index">04 · DATA</span>
+            <h3>Storage</h3>
+          </div>
+          <div class="layer-items">
+            <span class="pill">MongoDB</span><span class="pill">Firebase Firestore</span><span class="pill">Schema
+              Design</span>
+          </div>
+        </div>
+        <div class="stack-layer">
+          <div class="layer-meta"><span class="layer-index">05 · TOOLING</span>
+            <h3>Workflow</h3>
+          </div>
+          <div class="layer-items">
+            <span class="pill">Git & GitHub</span><span class="pill">VS Code</span><span class="pill">Android
+              Studio</span>
+            <span class="pill">Postman</span><span class="pill">Agile / SDLC</span>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <hr class="divider wrap" />
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <div class="section-label reveal fade-up">02 / SKILLS</div>
-            <h2 class="section-title reveal fade-up">Tech I work with</h2>
-            <div class="skills-grid">
-                <!-- Languages -->
-                <div class="skill-card reveal fade-up delay-1">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>LANGUAGES</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Dart</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                    </div>
-                </div>
-                <!-- Frameworks -->
-                <div class="skill-card reveal fade-up delay-2">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>FRAMEWORKS</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag featured">Flutter</span>
-                        <span class="skill-tag featured">React.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">Firebase</span>
-                    </div>
-                </div>
-                <!-- Databases -->
-                <div class="skill-card reveal fade-up delay-3">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>DATABASES</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Firebase Firestore</span>
-                        <span class="skill-tag">REST APIs</span>
-                    </div>
-                </div>
-                <!-- State Management -->
-                <div class="skill-card reveal fade-up delay-1">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>STATE MANAGEMENT</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Provider</span>
-                        <span class="skill-tag">Riverpod</span>
-                        <span class="skill-tag">MVC Architecture</span>
-                    </div>
-                </div>
-                <!-- Tools -->
-                <div class="skill-card reveal fade-up delay-2">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>TOOLS</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Android Studio</span>
-                        <span class="skill-tag">Postman</span>
-                    </div>
-                </div>
-                <!-- Core -->
-                <div class="skill-card reveal fade-up delay-3">
-                    <div class="skill-card-header">
-                        <span class="skill-icon"></span>
-                        <h3>CORE</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">DSA</span>
-                        <span class="skill-tag">OOP</span>
-                        <span class="skill-tag">Auth & JWT</span>
-                        <span class="skill-tag">Responsive UI</span>
-                        <span class="skill-tag">JSON Parsing</span>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
+    <!-- PROJECTS -->
+    <section class="section-pad wrap" id="projects">
+      <div class="section-head reveal">
+        <span class="tag">Selected work</span>
+        <h2>Six products, end to end</h2>
+        <p>Each one designed, built, and deployed solo — from database schema to the screen a user actually taps.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="proj-card sos reveal">
+          <div class="proj-top">
+            <h3>Women SOS</h3>
+            <span class="status-chip"><span class="dot"></span>SAFETY</span>
+          </div>
+          <div class="proj-stack">
+            <span>Flutter</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>OpenStreetMap
+              API</span>
+          </div>
+          <ul class="proj-list">
+            <li>Real-time emergency alert system dispatching SOS to trusted contacts in under 10 seconds.</li>
+            <li>Live location tracking with continuous sync over custom REST APIs.</li>
+            <li>Secure auth and background push notifications for silent alerts.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar" target="_blank" rel="noopener">View on GitHub <svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
         </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <h3>Talent Match AI</h3>
+            <span class="status-chip"><span class="dot"></span>AI PLATFORM</span>
+          </div>
+          <div class="proj-stack">
+            <span>Flutter</span><span>Node.js</span><span>Python</span><span>MongoDB</span><span>JWT</span>
+          </div>
+          <ul class="proj-list">
+            <li>AI recruitment platform for resume screening, candidate ranking, and job matching.</li>
+            <li>Semantic search via Sentence Transformers to improve match accuracy.</li>
+            <li>Recruiter dashboard secured with JWT-based authentication.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar/talentmatchai" target="_blank" rel="noopener">View
+            on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <h3>Skill Bridge AI</h3>
+            <span class="status-chip"><span class="dot"></span>AI PLATFORM</span>
+          </div>
+          <div class="proj-stack">
+            <span>Flutter</span><span>Express</span><span>MongoDB</span><span>Gemini API</span>
+          </div>
+          <ul class="proj-list">
+            <li>Career-development platform for skill assessment and personalized learning paths.</li>
+            <li>Resume analysis, AI chatbot, and interview-prep tools powered by the Gemini API.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar" target="_blank" rel="noopener">View on GitHub <svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <h3>Hospital Management System</h3>
+            <span class="status-chip"><span class="dot"></span>FULL-STACK</span>
+          </div>
+          <div class="proj-stack">
+            <span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
+          </div>
+          <ul class="proj-list">
+            <li>Patient registration, doctor management, and appointment scheduling in one system.</li>
+            <li>Role-based access control across a modular REST API backend.</li>
+            <li>Indexed MongoDB queries to cut latency on high-volume lookups.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar" target="_blank" rel="noopener">View on GitHub <svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <h3>Hotel Booking System</h3>
+            <span class="status-chip"><span class="dot"></span>FULL-STACK</span>
+          </div>
+          <div class="proj-stack">
+            <span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
+          </div>
+          <ul class="proj-list">
+            <li>Real-time room availability, search filters, and payment integration.</li>
+            <li>Admin dashboard for managing hotels, bookings, and reservation history at scale.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar" target="_blank" rel="noopener">View on GitHub <svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <h3>AI Study Assistant</h3>
+            <span class="status-chip"><span class="dot"></span>AI PLATFORM</span>
+          </div>
+          <div class="proj-stack">
+            <span>Flutter</span><span>React.js</span><span>Groq API</span><span>Provider</span>
+          </div>
+          <ul class="proj-list">
+            <li>Note summarization, quiz generation, and study-progress tracking in one app.</li>
+            <li>AI-driven chat and personalized study recommendations via the Groq API.</li>
+          </ul>
+          <a class="proj-link" href="https://github.com/tanujdarokar" target="_blank" rel="noopener">View on GitHub <svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H8M17 7V16" />
+            </svg></a>
+        </div>
+
+      </div>
+
+      <div class="more-builds">
+        <div class="section-head reveal compact">
+          <span class="tag">More builds</span>
+          <h2 class="small-title">Also on GitHub</h2>
+          <p>Smaller experiments and clones — where a lot of the fundamentals got practiced.</p>
+        </div>
+
+        <div class="repo-grid">
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/modern_election_app" target="_blank"
+                rel="noopener">modern_election_app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A digital voting app concept with a modern UI.</p>
+            <div class="repo-meta"><span class="lang-dot lang-dart"></span>Dart · Updated May 1</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/T-Note-App" target="_blank" rel="noopener">T-Note-App <svg
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">Note-taking app with theme switching, profile, tasks, settings, and logout.</p>
+            <div class="repo-meta"><span class="lang-dot lang-dart"></span>Dart · Updated Dec 2025</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/carbanFootPrint" target="_blank" rel="noopener">carbanFootPrint
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A carbon footprint awareness challenge app.</p>
+            <div class="repo-meta"><span class="lang-dot lang-dart"></span>Dart · Updated last month</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/ai_assiatant_app" target="_blank" rel="noopener">ai_assistant_app
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">An AI assistant app built in Flutter.</p>
+            <div class="repo-meta"><span class="lang-dot lang-dart"></span>Dart · Updated May 28</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/E-Commerce" target="_blank" rel="noopener">E-Commerce <svg
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A Flutter e-commerce app build.</p>
+            <div class="repo-meta"><span class="lang-dot lang-dart"></span>Dart · Updated May 28</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/tic_tac_toe_clone" target="_blank"
+                rel="noopener">tic_tac_toe_clone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A classic tic-tac-toe game.</p>
+            <div class="repo-meta"><span class="lang-dot lang-js"></span>JavaScript · Updated last month</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/music_player_clone" target="_blank"
+                rel="noopener">music_player_clone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A music player clone.</p>
+            <div class="repo-meta"><span class="lang-dot lang-html"></span>HTML · Updated last month</div>
+          </div>
+
+          <div class="repo-card reveal">
+            <div class="repo-top">
+              <a href="https://github.com/tanujdarokar/login_signup_clone" target="_blank"
+                rel="noopener">login_signup_clone <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg></a>
+              <span class="repo-badge">Public</span>
+            </div>
+            <p class="repo-desc">A login and signup website UI.</p>
+            <div class="repo-meta"><span class="lang-dot lang-css"></span>CSS · Updated last month</div>
+          </div>
+        </div>
+
+        <a class="repo-more reveal" href="https://github.com/tanujdarokar?tab=repositories" target="_blank"
+          rel="noopener">See all repositories on GitHub →</a>
+      </div>
     </section>
 
+    <hr class="divider wrap" />
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-label reveal fade-up">03 / PROJECTS</div>
-            <h2 class="section-title reveal fade-up">Things I've built</h2>
+    <!-- EDUCATION + ACHIEVEMENTS -->
+    <section class="section-pad wrap" id="education">
+      <div class="section-head reveal">
+        <span class="tag">Background</span>
+        <h2>Education & track record</h2>
+      </div>
 
-            <div class="portfolio-grid">
-                <!-- Project 1: Women SOS -->
-                <div class="portfolio-item reveal fade-up" data-category="mobile">
-                    <div class="project-card-header">
-                        <div class="project-icon">🆘</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">Flutter - Safety App</span>
-                            <span class="badge badge-featured">Featured</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Women SOS</h3>
-                        <p>Real-time emergency safety application with instant SOS response under <strong>10 seconds</strong>. Live location sharing with OpenStreetMap API and instant alerts to trusted contacts.</p>
-                        <div class="project-metrics">
-                            <div class="metric-item">
-                                <span class="metric-value">&lt; 10s</span>
-                                <span class="metric-label">SOS Response</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-value">Live</span>
-                                <span class="metric-label">Location Tracking</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">OpenStreetMap</span>
-                    </div>
-                </div>
-
-                <!-- Project 2: AI Study Assistance App -->
-                <div class="portfolio-item reveal fade-up delay-1" data-category="mobile">
-                    <div class="project-card-header">
-                        <div class="project-icon">🤖</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">Flutter - AI App</span>
-                            <span class="badge badge-featured">50+ Users</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>AI Study Assistance App</h3>
-                        <p>AI-powered study companion adopted by <strong>50+ students</strong>. Dynamic ML recommendation endpoints via REST APIs for personalized task management, built with MVC architecture.</p>
-                        <div class="project-metrics">
-                            <div class="metric-item">
-                                <span class="metric-value">50+</span>
-                                <span class="metric-label">Active Students</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-value">MVC</span>
-                                <span class="metric-label">Architecture</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Dart</span>
-                        <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">JSON</span>
-                    </div>
-                </div>
-
-                <!-- Project 3: Hospital Management System -->
-                <div class="portfolio-item reveal fade-up delay-2" data-category="web">
-                    <div class="project-card-header">
-                        <div class="project-icon">🏥</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">MERN - Web App</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Hospital Management System</h3>
-                        <p>Full-stack web application for patient records, admin operations, and appointment scheduling. <strong>Secure modular backend</strong> with optimized MongoDB indexing.</p>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                </div>
-
-                <!-- Project 4: E-Commerce Application -->
-                <div class="portfolio-item reveal fade-up delay-3" data-category="mobile">
-                    <div class="project-card-header">
-                        <div class="project-icon">🛒</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">Flutter - E-Commerce</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>E-Commerce Application</h3>
-                        <p>Mobile e-commerce app managing <strong>20+ products</strong> with <strong>25% faster load time</strong> through optimized async API calls. Cart management and dynamic data sync.</p>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Dart</span>
-                        <span class="tech-tag">Provider</span>
-                        <span class="tech-tag">REST APIs</span>
-                    </div>
-                </div>
-
-                <!-- Project 5: Hotel Booking Website -->
-                <div class="portfolio-item reveal fade-up delay-4" data-category="web">
-                    <div class="project-card-header">
-                        <div class="project-icon">🏨</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">MERN - Web App</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Hotel Booking Website</h3>
-                        <p>Responsive hotel booking platform with hotel listing and booking functionality. <strong>User-friendly interfaces</strong> with integrated backend APIs for booking management.</p>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                </div>
-
-                <!-- Project 6: Amazon Clone -->
-                <div class="portfolio-item reveal fade-up delay-5" data-category="web">
-                    <div class="project-card-header">
-                        <div class="project-icon">📦</div>
-                        <div class="project-badges">
-                            <span class="badge badge-outline">HTML/CSS - Frontend</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Amazon Clone</h3>
-                        <p>E-commerce frontend inspired by Amazon. Responsive layouts, navigation bar, and product listing sections. Focus on <strong>UI/UX and responsive</strong> design practices.</p>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">Bootstrap</span>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
+      <div class="edu-card reveal spaced">
+        <div class="edu-top">
+          <h3>B.Tech in Computer Science & Engineering (Core)</h3>
+          <span class="edu-gpa">SGPA 7.4 / 10</span>
         </div>
+        <div class="edu-sub">Parul University, Gujarat</div>
+        <div class="edu-dates">2023 — Expected June 2027 · Currently 7th Semester</div>
+        <div class="edu-course">
+          <span>Data Structures & Algorithms</span><span>MEAN Stack</span><span>OOP</span>
+          <span>Mobile App Development</span><span>DBMS</span><span>Operating Systems</span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="info-card reveal">
+          <h3>Achievements</h3>
+          <div class="achieve-item"><span class="idx mono">→</span>
+            <p><strong>Prompt Wars Hackathon</strong> — selected to compete on-site at the Google Office, Gurugram.</p>
+          </div>
+          <div class="achieve-item"><span class="idx mono">→</span>
+            <p><strong>300+ DSA problems</strong> solved in C++ across online judges.</p>
+          </div>
+          <div class="achieve-item"><span class="idx mono">→</span>
+            <p><strong>5+ apps shipped</strong> independently, from idea to a working, usable product.</p>
+          </div>
+        </div>
+        <div class="info-card reveal">
+          <h3>Certifications</h3>
+          <ul class="cert-list">
+            <li><strong>Flutter Development Certification</strong><span>Google</span></li>
+            <li><strong>MongoDB Certified Developer</strong><span>2025</span></li>
+            <li><strong>Software Engineering Virtual Experience</strong><span>J.P. Morgan & Accenture</span></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-
-    <!-- Achievements Section -->
-    <section id="certifications" class="achievements">
-        <div class="container">
-            <div class="section-label reveal fade-up">04 / ACHIEVEMENTS</div>
-            <h2 class="section-title reveal fade-up">Milestones & Recognition</h2>
-            <div class="achievements-grid">
-                <!-- Achievement 1 -->
-                <div class="achievement-card reveal fade-up delay-1">
-                    <div class="achievement-icon">🏆</div>
-                    <h3>Prompt Wars Hackathon</h3>
-                    <p>Selected and competed at the Prompt Wars hackathon held on-site at the <strong>Google Office, Gurugram.</strong></p>
-                </div>
-                <!-- Achievement 2 -->
-                <div class="achievement-card reveal fade-up delay-2">
-                    <div class="achievement-icon">💻</div>
-                    <h3>300+ DSA Problems</h3>
-                    <p>Solved over <strong>300+ Data Structures & Algorithms</strong> problems on online judges using C++.</p>
-                </div>
-                <!-- Achievement 3 -->
-                <div class="achievement-card reveal fade-up delay-3">
-                    <div class="achievement-icon">📱</div>
-                    <h3>5+ Apps Shipped</h3>
-                    <p>Autonomously built and shipped over <strong>5 personal and academic</strong> mobile software projects.</p>
-                </div>
-                <!-- Achievement 4 -->
-                <div class="achievement-card reveal fade-up delay-1">
-                    <div class="achievement-icon">🎓</div>
-                    <h3>Google Certified</h3>
-                    <p>Flutter Development Certification from <strong>Google</strong>, October 2025.</p>
-                </div>
-                <!-- Achievement 5 -->
-                <div class="achievement-card reveal fade-up delay-2">
-                    <div class="achievement-icon">🏛️</div>
-                    <h3>J.P. Morgan & Accenture</h3>
-                    <p>Completed Software Engineering Virtual Experience with <strong>J.P. Morgan & Accenture.</strong></p>
-                </div>
-                <!-- Achievement 6 -->
-                <div class="achievement-card reveal fade-up delay-3">
-                    <div class="achievement-icon">🍃</div>
-                    <h3>MongoDB Certified</h3>
-                    <p>Certified MongoDB Developer, validating expertise in <strong>NoSQL database design</strong>, 2025.</p>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
+    <!-- CONTACT -->
+    <section class="section-pad wrap" id="contact">
+      <div class="contact reveal">
+        <h2>Let's build something.</h2>
+        <p>Looking for a fresher Software Development Engineer, Flutter, or full-stack role. Currently based in
+          Pandhurna, Madhya Pradesh — open to relocation.</p>
+        <div class="contact-links">
+          <a href="mailto:tanujdarokar777@gmail.com">✉ tanujdarokar777@gmail.com</a>
+          <a href="tel:+918602406106">☎ +91-8602406106</a>
+          <a href="https://github.com/tanujdarokar" target="_blank" rel="noopener">⌥ GitHub</a>
+          <a href="https://linkedin.com/in/tanuj-darokar-626292288" target="_blank" rel="noopener">in LinkedIn</a>
         </div>
+      </div>
     </section>
 
+  </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title reveal fade-up">Let's Work Together</h2>
-            <p class="contact-subtitle reveal fade-up delay-1">Have a project in mind? Let's create something amazing</p>
-            <div class="contact-content">
-                <form class="contact-form reveal fade-left delay-2" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="sr-only">Your Name</label>
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="sr-only">Your Email</label>
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="sr-only">Project Subject</label>
-                        <input type="text" id="subject" placeholder="Project Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="sr-only">Tell me about your project...</label>
-                        <textarea id="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <div class="contact-info reveal fade-right delay-2">
-                    <div class="contact-item">
-                        <h3>Email</h3>
-                        <p><a href="mailto:tanujdarokar777@gmail.com">tanujdarokar777@gmail.com</a></p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Phone</h3>
-                        <p>+91 - 8602406106</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Location</h3>
-                        <p>Pandhurna, Madhya Pradesh, India</p>
-                    </div>
-                    <div class="social-links">
-                        <h3>Connect With Me</h3>
-                        <div class="socials">
-                            <a href="https://github.com/tanujdarokar" target="_blank" class="social-icon">GitHub</a>
-                            <a href="https://www.linkedin.com/in/tanuj-darokar-626292288" target="_blank"
-                                class="social-icon">LinkedIn</a>
-                            <a href="https://www.google.com/maps/place/Pandhurna" target="_blank"
-                                class="social-icon">Location</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <p>// built for Tanuj Darokar — updated 2026</p>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Tanuj Darokar. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#portfolio">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </footer>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">↑</button>
+    // scroll progress bar
+    const progressBar = document.getElementById('progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    };
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
-    <script src="js/smooth-scroll.js" defer></script>
-    <script src="js/main.js" defer></script>
+    // scroll reveal with per-group stagger
+    const groups = [
+      document.querySelectorAll('.projects-grid .proj-card'),
+      document.querySelectorAll('.repo-grid .repo-card'),
+      document.querySelectorAll('.stack .stack-layer'),
+      document.querySelectorAll('.two-col .info-card'),
+    ];
+    groups.forEach(group => {
+      group.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = reduceMotion ? '0s' : (i * 0.09) + 's';
+      });
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // animated stat counters
+    const counters = document.querySelectorAll('[data-count]');
+    const countIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        countIo.unobserve(e.target);
+        const target = parseInt(e.target.getAttribute('data-count'), 10);
+        const suffix = e.target.getAttribute('data-suffix') || '';
+        if (reduceMotion) { e.target.textContent = target + suffix; return; }
+        const duration = 900;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          e.target.textContent = Math.round(eased * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => countIo.observe(c));
+
+    // cursor-reactive background glow (hero region)
+    if (!reduceMotion) {
+      document.addEventListener('pointermove', (e) => {
+        document.body.style.setProperty('--mx', e.clientX + 'px');
+        document.body.style.setProperty('--my', e.clientY + 'px');
+      }, { passive: true });
+    }
+
+    // magnetic buttons
+    if (!reduceMotion) {
+      document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const r = btn.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
+      });
+    }
+
+    // subtle 3D tilt + glow position on project cards
+    if (!reduceMotion) {
+      document.querySelectorAll('.proj-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = e.clientX - r.left, py = e.clientY - r.top;
+          const rx = ((py / r.height) - 0.5) * -6;
+          const ry = ((px / r.width) - 0.5) * 6;
+          card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+          card.style.setProperty('--px', px + 'px');
+          card.style.setProperty('--py', py + 'px');
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    // mobile nav toggle (simple show/hide of links as a stacked menu)
+    const toggle = document.querySelector('.nav-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const links = document.querySelector('.nav-links');
+        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+      });
+    }
+  </script>
+
 </body>
 
 </html>
